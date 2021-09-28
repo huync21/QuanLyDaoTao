@@ -13,6 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chọn ngành học</title>
+    <title>Trang chu sinh vien</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootsrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
 </head>
 
 <body>
@@ -25,34 +30,46 @@
 <c:if test = "${sessionScope.sinhvien eq null}">
     <c:redirect url="gdDangNhap.jsp?err=timeout"/>
 </c:if>
-<h1>Chọn ngành học</h1>
-<form action="dangKyHocServlet" method="post">
-    <table>
-        <tr>
-            <td>Ngành:</td>
-            <td>
-                <select name="nganh">
-                    <c:forEach var="sinhVienKhoa" items="${listSinhVienKhoa}">
-                        <option value="${sinhVienKhoa.id}">${sinhVienKhoa.khoa.ten}</option>
-                    </c:forEach>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Kì học:</td>
-            <td>
-                <select name="ki">
-                    <c:forEach var="kiHoc" items="${listKiHoc}">
-                        <option value="${kiHoc.id}">${kiHoc.hocKi.ten} - năm ${kiHoc.namHoc.ten}</option>
-                    </c:forEach>
-                </select>
-            </td>
-        </tr>
-        <tr>
 
-            <td> <input type="submit" value="Vào đăng ký"> </td>
-        </tr>
-    </table>
-</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+
+                    <h1>Chọn ngành học</h1>
+
+                    <form style="margin-top: 30px"  action="dangKyHocServlet" method="post">
+                        <div class="form-floating mb-3">
+                            <select class="form-control" id="floatingInput" name="nganh">
+                                <c:forEach var="sinhVienKhoa" items="${listSinhVienKhoa}">
+                                    <option value="${sinhVienKhoa.id}">${sinhVienKhoa.khoa.ten}</option>
+                                </c:forEach>
+                            </select>
+                            <label for="floatingInput">Ngành học của sinh viên:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-control" id="floatingPassword" name="ki">
+                                <c:forEach var="kiHoc" items="${listKiHoc}">
+                                    <option value="${kiHoc.id}">${kiHoc.hocKi.ten} - năm ${kiHoc.namHoc.ten}</option>
+                                </c:forEach>
+                            </select>
+
+                            <label for="floatingPassword">Chọn kỳ học:</label>
+                        </div>
+
+
+                        <div class="d-grid" style="margin-top: 30px">
+                            <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Vào đăng ký</button>
+                        </div>
+                        <hr class="my-4">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

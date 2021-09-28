@@ -13,33 +13,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem lịch học</title>
-    <style>
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        table td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        table tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootsrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="js/table.js">
 </head>
 <body>
 <c:if test = "${sessionScope.sinhvien eq null}">
     <c:redirect url="gdDangNhap.jsp?err=timeout"/>
 </c:if>
 <h1 style="text-align:center">Lịch học</h1>
-<p>Lớp học phẩn: ${tenLopHocPhan}</p>
-<table>
+<p style="color:#fff;">Lớp học phẩn: ${tenLopHocPhan}</p>
+<table class="tbl-header">
     <tr>
         <th>TT</th>
         <th>Tuần</th>
@@ -48,7 +35,8 @@
         <th>Giảng viên</th>
         <th>Phòng học</th>
     </tr>
-
+</table>
+<table class="tbl-content">
     <c:forEach var="lichHoc" items="${listLichHoc}" varStatus="i">
         <tr>
             <td>${i.count}</td>

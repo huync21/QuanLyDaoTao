@@ -35,14 +35,21 @@
             background-color: #dddddd;
         }
     </style>
+    <title>Trang chu sinh vien</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootsrap.min.css">
+    <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="js/table.js">
 </head>
 
 <body>
-<c:if test = "${sessionScope.sinhvien eq null}">
+<c:if test="${sessionScope.sinhvien eq null}">
     <c:redirect url="gdDangNhap.jsp?err=timeout"/>
 </c:if>
 <h1 style="text-align: center;">Đăng ký học</h1>
-<table style="margin:auto;">
+<table class="tbl-header" style="margin:auto;">
     <tr>
         <td>Mã sinh viên:</td>
 
@@ -65,18 +72,26 @@
 </table>
 
 <h3 style="color: red">${errorMessage}</h3>
-<table class="table2">
-    <tr>
-        <th>TT</th>
-        <th>Mã môn học</th>
-        <th>Tên môn học</th>
-        <th>Tên lớp học phần</th>
-        <th>Số Tín</th>
-        <th>Xem lịch</th>
-        <th>Sửa</th>
-        <th>Xóa</th>
-    </tr>
 
+    <div class="tbl-header">
+        <table>
+            <thead>
+            <tr>
+                <th>TT</th>
+                <th>Mã môn học</th>
+                <th>Tên môn học</th>
+                <th>Tên lớp học phần</th>
+                <th>Số Tín</th>
+                <th>Xem lịch</th>
+                <th>Sửa</th>
+                <th>Xóa</th>
+            </tr>
+            </thead>
+
+        </table>
+
+    </div>
+<table class="tbl-content">
     <c:forEach var="dangKyHoc" items="${sessionScope.listDangKyHoc}" varStatus="i">
         <tr>
             <td>${i.count}</td>
@@ -84,9 +99,15 @@
             <td>${dangKyHoc.lopHocPhan.monHocKiHoc.monHoc.ten}</td>
             <td>${dangKyHoc.lopHocPhan.ten}</td>
             <td>${dangKyHoc.lopHocPhan.monHocKiHoc.monHoc.soTC}</td>
-            <td><a href="${pageContext.request.contextPath}/lichHocServlet?idlhp=${dangKyHoc.lopHocPhan.id}&tenlhp=${dangKyHoc.lopHocPhan.ten}">(click để xem)</a></td>
-            <td><a href="${pageContext.request.contextPath}/chonLopHocPhanServlet?idmhkh=${dangKyHoc.lopHocPhan.monHocKiHoc.id}">(click để sửa)</a></td>
-            <td><a href="${pageContext.request.contextPath}/dangKyHocServlet?action=xoa&idlhp=${dangKyHoc.lopHocPhan.id}">(click để xóa)</a></td>
+            <td>
+                <a class="btn-link" style="color: #b02a37" href="${pageContext.request.contextPath}/lichHocServlet?idlhp=${dangKyHoc.lopHocPhan.id}&tenlhp=${dangKyHoc.lopHocPhan.ten}">(click
+                    để xem)</a></td>
+            <td>
+                <a class="btn-link" style="color: #b02a37" href="${pageContext.request.contextPath}/chonLopHocPhanServlet?idmhkh=${dangKyHoc.lopHocPhan.monHocKiHoc.id}">(click
+                    để sửa)</a></td>
+            <td>
+                <a class="btn-link" style="color: #b02a37" href="${pageContext.request.contextPath}/dangKyHocServlet?action=xoa&idlhp=${dangKyHoc.lopHocPhan.id}">(click
+                    để xóa)</a></td>
         </tr>
     </c:forEach>
 
@@ -105,6 +126,7 @@
         <input type="submit" value="Lưu đăng ký">
     </form>
 </div>
+
 
 </body>
 </html>

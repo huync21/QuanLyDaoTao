@@ -38,17 +38,17 @@ public class ThanhVienDAO extends DAO {
         return kq;
     }
 
-    public static void main(String[] args) {
-        ThanhVienDAO thanhVienDAO = new ThanhVienDAO();
-        ThanhVien thanhVien = new ThanhVien();
-        thanhVien.setUserName("huy2110");
-        thanhVien.setPassword("123");
-        boolean ok = thanhVienDAO.kiemTraDangNhap(thanhVien);
-        if(ok){
-            System.out.println(thanhVien.getHoTen().getTenDayDu());
-            System.out.println(thanhVien.getVaiTro());
-        }else{
-            System.out.println("loi roi");
-        }
-    }
+//    public static void main(String[] args) {
+//        ThanhVienDAO thanhVienDAO = new ThanhVienDAO();
+//        ThanhVien thanhVien = new ThanhVien();
+//        thanhVien.setUserName("huy2110");
+//        thanhVien.setPassword("123");
+//        boolean ok = thanhVienDAO.kiemTraDangNhap(thanhVien);
+//        if(ok){
+//            System.out.println(thanhVien.getHoTen().getTenDayDu());
+//            System.out.println(thanhVien.getVaiTro());
+//        }else{
+//            System.out.println("loi roi");
+//        }
+//    }
 }
